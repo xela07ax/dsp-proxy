@@ -53,7 +53,8 @@ func getRoot(w http.ResponseWriter, r *http.Request) {
 				http.Error(w, textErr, http.StatusInternalServerError)
 				return
 			}
-			nums[len(nums)-1] = intVar
+			fullInt, err := strconv.Atoi(fmt.Sprintf("%d%d", nums[len(nums)-1], intVar))
+			nums[len(nums)-1] = fullInt
 		}
 	}
 	// посчитаем
@@ -64,13 +65,10 @@ func getRoot(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 		var sznak string
-		fmt.Printf("plus:%s\n", plus)
 		if len(plus) > 0 {
 			sznak = plus[0]
 			plus = plus[1:]
-			fmt.Printf("new plus:%s\n", plus)
 		}
-		log.Printf("num:%d|sznak:%s", num, sznak)
 		switch sznak {
 		case "+":
 			summ += num
