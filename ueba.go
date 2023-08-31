@@ -87,8 +87,8 @@ func main() {
 		oneRecord.Logon_count = each[8]
 		allRecords = append(allRecords, oneRecord)
 	}
-	fmt.Println("Hello server at 3333\nhttp://localhost:3333/get-items?0\n")
-	fmt.Println("http://localhost:3333/get-items?852,7656,133\n")
+	fmt.Println("Hello server at 3333\nhttp://localhost:3333/get-items?0") // all
+	fmt.Println("http://localhost:3333/get-items?852,7656,133")
 	http.HandleFunc("/get-items", getItems)
 
 	err := http.ListenAndServe(":3333", nil)
@@ -98,11 +98,4 @@ func main() {
 		fmt.Printf("error starting server: %s\n", err)
 		os.Exit(1)
 	}
-
-	dat, err := json.Marshal(allRecords)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf(">%s\n", dat)
-	fmt.Println(records)
 }
