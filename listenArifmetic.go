@@ -57,7 +57,7 @@ func getRoot(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			//fullInt, err := strconv.Atoi(fmt.Sprintf("%d%d", nums[len(nums)-1], intVar)) //old
-			fullInt := nums[len(nums)-1]*10 + intVarm
+			fullInt := nums[len(nums)-1]*10 + intVar
 			nums[len(nums)-1] = fullInt
 		}
 	}
